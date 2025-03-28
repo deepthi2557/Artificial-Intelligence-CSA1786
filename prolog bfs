@@ -1,0 +1,55 @@
+% Entry point for BFS
+
+bfs (Start, Goal, Path) :-
+
+bfs([[Start]), Goal, Path, []).
+
+% Base case: If the first path in the queue reaches the goal, return it
+
+bfs([[Goal | Rest] |_ ), Goal, Path, _) :-
+
+reverse ([Goal|Rest), Path), !.
+
+% BFS recursive step
+
+bfs([CurrentPath | OtherPaths), Goal, Path, Visited) :-
+
+CurrentPath = [CurrentNode|_], % Get the current node from path
+
+findall([NextNode | CurrentPath],
+
+(arc (CurrentNode, NextNode), \+ member (NextNode, Visited)),
+
+NewPaths),
+
+append (OtherPaths, NewPaths, UpdatedQueue),
+
+bfs (UpdatedQueue, Goal, Path, [CurrentNode|Visited]).
+
+% Graph definition
+
+arc(0, 1).
+
+arc(0, 2).
+
+arc(0, 3).
+
+arc(1, 4).
+
+arc(1, 5).
+
+arc (2, 6).
+
+arc (2, 7).
+
+arc(3, 8).
+
+arc (8, 9).
+
+arc(8, 10).
+
+arc (9, 11).
+
+arc (9, 12).
+
+arc (9, 13)
